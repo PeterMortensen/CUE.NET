@@ -28,6 +28,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "x64", "x64", "{2F99124B-FAE
 		libs\x64\CUESDK_2013.dll = libs\x64\CUESDK_2013.dll
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioAnalyzer", "Examples\AudioAnalyzer\AudioAnalyzer.csproj", "{F3F6222D-4EEB-47D1-97F6-9336478BD100}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +44,10 @@ Global
 		{7FD88256-5E14-4D7C-862B-7BC2CD04081A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FD88256-5E14-4D7C-862B-7BC2CD04081A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FD88256-5E14-4D7C-862B-7BC2CD04081A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3F6222D-4EEB-47D1-97F6-9336478BD100}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3F6222D-4EEB-47D1-97F6-9336478BD100}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3F6222D-4EEB-47D1-97F6-9336478BD100}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3F6222D-4EEB-47D1-97F6-9336478BD100}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,5 +57,6 @@ Global
 		{D69EF6D8-68FF-4C56-B5CB-253971B1DF91} = {FF50AF6A-D2AC-4772-B013-C10D127DBE29}
 		{0525D895-E706-4920-8733-DABD9194BFB1} = {D69EF6D8-68FF-4C56-B5CB-253971B1DF91}
 		{2F99124B-FAED-432D-B797-45566D373411} = {D69EF6D8-68FF-4C56-B5CB-253971B1DF91}
+		{F3F6222D-4EEB-47D1-97F6-9336478BD100} = {1F52DDC9-E9D0-4A7B-8E78-930528203EE6}
 	EndGlobalSection
 EndGlobal
