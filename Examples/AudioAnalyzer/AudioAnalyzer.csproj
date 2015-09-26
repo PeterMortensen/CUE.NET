@@ -35,12 +35,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CSCore, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\CUE.NET\packages\CSCore.1.0.0.0\lib\net35-client\CSCore.dll</HintPath>
+    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\OpenTKWithOpenAL.1.1.1589.5942\lib\NET40\OpenTK.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -67,6 +68,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="AudioService.cs" />
+    <Compile Include="FFTSpectrumBrush.cs" />
+    <Compile Include="LomotFFT.cs" />
+    <Compile Include="RndStuff\ActionCommand.cs" />
+    <Compile Include="RndStuff\InvertBoolConverter.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -111,7 +117,8 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(SolutionDir)libs\x64\CUESDK_2013.dll" "$(TargetDir)x64\" /y
-xcopy "$(SolutionDir)libs\x86\CUESDK_2013.dll" "$(TargetDir)x86\" /y</PostBuildEvent>
+xcopy "$(SolutionDir)libs\x86\CUESDK_2013.dll" "$(TargetDir)x86\" /y
+xcopy /s /y "$(SolutionDir)packages\OpenTKWithOpenAL.1.1.1589.5942\NativeBinaries\x86\*.*" "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

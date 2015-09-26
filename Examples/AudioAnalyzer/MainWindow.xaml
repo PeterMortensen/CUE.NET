@@ -2,12 +2,83 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:audioAnalyzer="clr-namespace:AudioAnalyzer"
+        xmlns:rndStuff="clr-namespace:AudioAnalyzer.RndStuff"
         Title="CUE.NET Audio Analyzer" Width="1280" Height="720">
     <Window.DataContext>
         <audioAnalyzer:MainWindowViewModel />
     </Window.DataContext>
-    
-    <Grid>
-        
-    </Grid>
+
+    <Window.Resources>
+        <rndStuff:InvertBoolConverter x:Key="InvertBoolConverter" />
+    </Window.Resources>
+
+    <Border Background="WhiteSmoke">
+        <DockPanel Margin="12" LastChildFill="True">
+            <GroupBox DockPanel.Dock="Right" VerticalAlignment="Top" Margin="8,0" Header="Settings">
+                <StackPanel>
+                    <Grid Margin="0,8">
+                        <Grid.Resources>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                                <Setter Property="HorizontalAlignment" Value="Right" />
+                                <Setter Property="Margin" Value="2,2,8,2" />
+                            </Style>
+
+                            <Style TargetType="{x:Type ComboBox}">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+
+                            <Style TargetType="{x:Type TextBox}">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+
+                            <Style TargetType="{x:Type CheckBox}">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+                        </Grid.Resources>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="200" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="32" />
+                            <RowDefinition Height="32" />
+                            <RowDefinition Height="32" />
+                            <RowDefinition Height="32" />
+                            <RowDefinition Height="32" />
+                            <RowDefinition Height="32" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Audio-Device" />
+                        <ComboBox Grid.Row="0" Grid.Column="1" IsReadOnly="True" ItemsSource="{Binding Path=AvailableAudioDevices}" SelectedItem="{Binding Path=SelectedAudioDevice}"
+                                  IsEnabled="{Binding Path=IsRunning, Converter={StaticResource InvertBoolConverter}}"/>
+
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Rainbow-Background" />
+                        <CheckBox Grid.Row="1" Grid.Column="1" IsChecked="{Binding Path=ShowRainbow}" />
+
+                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Spectrum-Color A" />
+                        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=SpectrumA, UpdateSourceTrigger=PropertyChanged}" />
+
+                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Spectrum-Color R" />
+                        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Path=SpectrumR, UpdateSourceTrigger=PropertyChanged}" />
+
+                        <TextBlock Grid.Row="4" Grid.Column="0" Text="Spectrum-Color G" />
+                        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Path=SpectrumG, UpdateSourceTrigger=PropertyChanged}" />
+
+                        <TextBlock Grid.Row="5" Grid.Column="0" Text="Spectrum-Color B" />
+                        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Path=SpectrumB, UpdateSourceTrigger=PropertyChanged}" />
+                    </Grid>
+
+                    <Button Height="24" Margin="0,4" Content="Start (stays disabled because it will crash at restart)" Command="{Binding Path=StartCommand}"
+                            IsEnabled="{Binding Path=IsRunning, Converter={StaticResource InvertBoolConverter}}" />
+                    <Button Height="24" Margin="0,4" Content="Stop" Command="{Binding Path=StopCommand}" />
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Header="Visualizer">
+
+            </GroupBox>
+        </DockPanel>
+    </Border>
 </Window>
